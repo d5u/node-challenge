@@ -16,7 +16,8 @@ yarn start || yarn start:watch
 ```
 
 ## Testing
-Use an http request client of your choice (ie Postman)
+Use an http request client of your choice (ie Postman)\
+
 Endpoints:
 ```
 localhost:3000/planets
