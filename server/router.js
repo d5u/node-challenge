@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { getAllPeople } = require('./utils/helper');
+const { getAllPeople, getAllPlanets } = require('./utils/helper');
 
 router
   .route('/people')
@@ -20,15 +20,20 @@ router
           people.sort((a, b) => a[sortBy] - b[sortBy]);
           break;
         default:
-          res.send('Error: Invalid query parameter').status(422);
+          res.status(422).json('Error: Invalid query parameter');
       }
     }
 
-    people.length > 0 ? res.status(200).json(people) : res.send('Error: Unable to find list of all people').status(400);
+    people.length > 0 ? res.status(200).json(people) : res.status(400).json('Error: Unable to find list of all people');
   });
 
 router
   .route('/planets')
+  .get(async (req, res) => {
+    const planets = await getAllPlanets();
+
+    planets.length > 0 ? res.status(200).json(planets) : res.status(400).json('Error: Unable to find list of all planets');
+  });
 
 
 module.exports = router;
