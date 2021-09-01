@@ -73,8 +73,6 @@ const getResidentNames = async (planet) => {
     .catch(err => console.log('Failed to complete get request to http://swapi.dev with error: ' + err));
 }
 
-getAllPlanets();
-
 module.exports = {
   getAllPeople,
   getAllPlanets

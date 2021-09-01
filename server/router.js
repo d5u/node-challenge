@@ -10,7 +10,8 @@ router
     
     // If sortBy query exists, sort people by name, height, or mass
     if (sortBy && people.length > 0) {
-      // ensure param is a string and lowercase
+      // Ensure param is a string and lowercase
+      // Send error if param is unknown
       switch (String(sortBy).toLowerCase()) {
         case 'name':
           people.sort((a, b) => a.name.localeCompare(b.name));
